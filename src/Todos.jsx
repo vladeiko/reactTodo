@@ -3,21 +3,25 @@ import React from "react";
 const Todos = ({ todos, deleteTodo }) => {
   const todoList = todos.length ? (
     todos.map((todo) => (
-      <div className="collection-item" key={todo.id}>
-        <span
-          onClick={() => {
-            deleteTodo(todo.id);
-          }}
-        >
-          {todo.content}
-        </span>
-      </div>
+      <label className="todo-label" htmlFor={"check-" + todo.id} key={todo.id}>
+        <div className="list-element">
+          <span>{todo.content}</span>
+          <button
+            className="remove-button"
+            onClick={() => {
+              deleteTodo(todo.id);
+            }}
+          >
+            ❌
+          </button>
+        </div>
+      </label>
     ))
   ) : (
-    <p className="center">No todo's left</p>
+    <p className="no-todos">No todo's left</p>
   );
 
-  return <div className="todos collection">{todoList}</div>;
+  return <div className="todo-list">{todoList}</div>;
 };
 
 export default Todos;

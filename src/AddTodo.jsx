@@ -22,16 +22,15 @@ class AddTodo extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>Add new todo:</label>
-          <input
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.content}
-          />
-        </form>
-      </div>
+      <form className="main-form" onSubmit={this.handleSubmit}>
+        <input
+          className="main-form__input"
+          type="text"
+          onChange={this.handleChange}
+          value={this.state.content}
+          placeholder="What needs to be done?"
+        />
+      </form>
     );
   }
 }
