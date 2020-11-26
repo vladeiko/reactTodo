@@ -5,7 +5,20 @@ const Todos = ({ todos, deleteTodo }) => {
     todos.map((todo) => (
       <label className="todo-label" htmlFor={"check-" + todo.id} key={todo.id}>
         <div className="list-element">
-          <span>{todo.content}</span>
+          <div
+            className={
+              "todo-list__element " + todo.isChecked === true
+                ? "completed"
+                : "not-completed"
+            }
+          >
+            <input
+              className="check-button"
+              id={"chech" + todo.id}
+              type="checkbox"
+            ></input>
+            <span>{todo.content}</span>
+          </div>
           <button
             className="remove-button"
             onClick={() => {

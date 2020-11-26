@@ -20,6 +20,7 @@ class App extends Component {
 
   addTodo = (todo) => {
     todo.id = this.currentId++;
+    todo.isChecked = false;
 
     let todos = [...this.state.todos, todo];
     this.setState({
