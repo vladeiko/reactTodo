@@ -12,15 +12,6 @@ class App extends Component {
 
   currentId = 0;
 
-  setFilter = (filter) => {
-    const todos = this.state.todos;
-
-    this.setState({
-      todos,
-      filter,
-    });
-  };
-
   deleteTodo = (id) => {
     const todos = this.state.todos.filter((item) => item.id !== id);
 
@@ -70,7 +61,6 @@ class App extends Component {
             todos={this.state.todos}
             deleteTodo={this.deleteTodo}
             checkTodo={this.checkTodo}
-            filter={this.state.filter}
           />
 
           {this.state.todos.length ? (
