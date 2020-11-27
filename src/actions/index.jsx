@@ -1,5 +1,3 @@
-import { all, completed, active } from "./filterStates";
-
 export const SetAll = () => {
   return {
     type: "SetAll",

@@ -14,7 +14,7 @@ const Todos = ({ todos, deleteTodo, checkTodo }) => {
     if (filter === "Active") return todos.filter((i) => i.isChecked === false);
   };
 
-  const localTodos = getLocalTodos();
+  // const localTodos = getLocalTodos();
 
   return (
     <div className="todo-list">
