@@ -1,17 +1,19 @@
+import { all, completed, active } from "./filterStates";
+
 export const SetAll = () => {
   return {
-    type: "SetAll",
+    type: all,
   };
 };
 
 export const SetCompleted = () => {
   return {
-    type: "SetCompleted",
+    type: completed,
   };
 };
 
 export const SetActive = () => {
   return {
-    type: "SetActive",
+    type: active,
   };
 };
