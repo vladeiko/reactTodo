@@ -1,4 +1,5 @@
 import React from "react";
+import CreateTodoElement from "./CreateTodoElement";
 
 const Todos = ({ todos, deleteTodo, checkTodo, filter }) => {
   const getLocalTodos = () => {
@@ -12,47 +13,19 @@ const Todos = ({ todos, deleteTodo, checkTodo, filter }) => {
 
   const localTodos = getLocalTodos();
 
-  const todoList = todos.length
-    ? localTodos.map((todo) => (
-        <div className={"todo-list__element "}>
-          <label
-            className="todo-label"
-            htmlFor={"check-" + todo.id}
-            key={todo.id}
-          >
-            <div className="list-element">
-              <div>
-                <input
-                  className="check-button"
-                  id={"check-" + todo.id}
-                  type="checkbox"
-                  defaultChecked={todo.isChecked}
-                  onClick={() => checkTodo(todo.id)}
-                ></input>
-                <span
-                  className={
-                    "span " +
-                    (todo.isChecked === false ? "not-completed" : "completed")
-                  }
-                >
-                  {todo.content}
-                </span>
-              </div>
-              <button
-                className="remove-button"
-                onClick={() => {
-                  deleteTodo(todo.id);
-                }}
-              >
-                ❌
-              </button>
-            </div>
-          </label>
-        </div>
-      ))
-    : null;
-
-  return <div className="todo-list">{todoList}</div>;
+  return (
+    <div className="todo-list">
+      {todos.length
+        ? localTodos.map((todo) => (
+            <CreateTodoElement
+              todo={todo}
+              deleteTodo={deleteTodo}
+              checkTodo={checkTodo}
+            />
+          ))
+        : null}
+    </div>
+  );
 };
 
 export default Todos;

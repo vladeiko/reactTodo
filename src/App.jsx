@@ -7,19 +7,17 @@ import Filters from "./Filters";
 class App extends Component {
   state = {
     todos: [],
+    filter: "All",
   };
 
   currentId = 0;
 
-  filter = "All";
-
   setFilter = (filter) => {
-    this.filter = filter;
-
     const todos = this.state.todos;
 
     this.setState({
       todos,
+      filter,
     });
   };
 
@@ -72,7 +70,7 @@ class App extends Component {
             todos={this.state.todos}
             deleteTodo={this.deleteTodo}
             checkTodo={this.checkTodo}
-            filter={this.filter}
+            filter={this.state.filter}
           />
 
           {this.state.todos.length ? (
