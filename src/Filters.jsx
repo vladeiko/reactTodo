@@ -1,9 +1,21 @@
 import React from "react";
 
-const Filters = (todos) => {
+const Filters = ({ todos, setFilter, deleteCompleted }) => {
+  const handleAllClick = () => {
+    setFilter("All");
+  };
+
+  const handleActiveClick = () => {
+    setFilter("Active");
+  };
+
+  const handleCompletedClick = () => {
+    setFilter("Completed");
+  };
+
   const filters = (
     <div className="filters">
-      <p className="filters__counter">0 items left</p>
+      <p className="filters__counter">{todos.length + " items left"}</p>
       <div className="selected-input">
         <input
           className="filters__show-all"
@@ -11,7 +23,9 @@ const Filters = (todos) => {
           id="radio1"
           name="radio-filter"
         />
-        <label htmlFor="radio1">All</label>
+        <label htmlFor="radio1" onClick={handleAllClick}>
+          All
+        </label>
       </div>
       <div className="selected-input">
         <input
@@ -20,7 +34,9 @@ const Filters = (todos) => {
           id="radio2"
           name="radio-filter"
         />
-        <label htmlFor="radio2">Active</label>
+        <label htmlFor="radio2" onClick={handleActiveClick}>
+          Active
+        </label>
       </div>
       <div className="selected-input">
         <input
@@ -29,12 +45,15 @@ const Filters = (todos) => {
           id="radio3"
           name="radio-filter"
         />
-        <label htmlFor="radio3">Completed</label>
+        <label htmlFor="radio3" onClick={handleCompletedClick}>
+          Completed
+        </label>
       </div>
       <button
         className="filters__clear-completed"
         type="radio"
         name="radio-filter"
+        onClick={deleteCompleted}
       >
         Clear completed
       </button>

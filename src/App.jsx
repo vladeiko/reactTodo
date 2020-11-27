@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./Header";
 import Todos from "./Todos";
 import AddTodo from "./AddTodo";
+import Filters from "./Filters";
 
 class App extends Component {
   state = {
@@ -9,6 +10,18 @@ class App extends Component {
   };
 
   currentId = 0;
+
+  filter = "All";
+
+  setFilter = (filter) => {
+    this.filter = filter;
+
+    const todos = this.state.todos;
+
+    this.setState({
+      todos,
+    });
+  };
 
   deleteTodo = (id) => {
     const todos = this.state.todos.filter((item) => item.id !== id);
@@ -19,7 +32,7 @@ class App extends Component {
   };
 
   checkTodo = (id) => {
-    const todos = this.state.todos;
+    const todos = [...this.state.todos];
     todos.forEach((i) => {
       if (i.id === id) {
         i.isChecked = !i.isChecked;
@@ -27,7 +40,7 @@ class App extends Component {
     });
 
     this.setState({
-      todos: todos,
+      todos,
     });
   };
 
@@ -35,7 +48,15 @@ class App extends Component {
     todo.id = this.currentId++;
     todo.isChecked = false;
 
-    let todos = [...this.state.todos, todo];
+    const todos = [todo, ...this.state.todos];
+    this.setState({
+      todos,
+    });
+  };
+
+  deleteCompleted = () => {
+    const todos = this.state.todos.filter((i) => !i.isChecked);
+
     this.setState({
       todos,
     });
@@ -51,7 +72,16 @@ class App extends Component {
             todos={this.state.todos}
             deleteTodo={this.deleteTodo}
             checkTodo={this.checkTodo}
+            filter={this.filter}
           />
+
+          {this.state.todos.length ? (
+            <Filters
+              todos={this.state.todos}
+              setFilter={this.setFilter}
+              deleteCompleted={this.deleteCompleted}
+            />
+          ) : null}
         </div>
       </div>
     );

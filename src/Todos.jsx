@@ -1,46 +1,58 @@
 import React from "react";
-import Filters from "./Filters";
 
-const Todos = ({ todos, deleteTodo, checkTodo }) => {
-  const todoList = todos.length ? (
-    todos.map((todo) => (
-      <label className="todo-label" htmlFor={"check-" + todo.id} key={todo.id}>
-        <div className="list-element">
-          <div
-            className={
-              "todo-list__element " +
-              (todo.isChecked === false ? "not-completed" : "completed")
-            }
+const Todos = ({ todos, deleteTodo, checkTodo, filter }) => {
+  const getLocalTodos = () => {
+    if (filter === "All") return todos;
+
+    if (filter === "Completed")
+      return todos.filter((i) => i.isChecked === true);
+
+    if (filter === "Active") return todos.filter((i) => i.isChecked === false);
+  };
+
+  const localTodos = getLocalTodos();
+
+  const todoList = todos.length
+    ? localTodos.map((todo) => (
+        <div className={"todo-list__element "}>
+          <label
+            className="todo-label"
+            htmlFor={"check-" + todo.id}
+            key={todo.id}
           >
-            <input
-              className="check-button"
-              id={"chech" + todo.id}
-              type="checkbox"
-              onClick={() => checkTodo(todo.id)}
-            ></input>
-            <span>{todo.content}</span>
-          </div>
-          <button
-            className="remove-button"
-            onClick={() => {
-              deleteTodo(todo.id);
-            }}
-          >
-            ❌
-          </button>
+            <div className="list-element">
+              <div>
+                <input
+                  className="check-button"
+                  id={"check-" + todo.id}
+                  type="checkbox"
+                  defaultChecked={todo.isChecked}
+                  onClick={() => checkTodo(todo.id)}
+                ></input>
+                <span
+                  className={
+                    "span " +
+                    (todo.isChecked === false ? "not-completed" : "completed")
+                  }
+                >
+                  {todo.content}
+                </span>
+              </div>
+              <button
+                className="remove-button"
+                onClick={() => {
+                  deleteTodo(todo.id);
+                }}
+              >
+                ❌
+              </button>
+            </div>
+          </label>
         </div>
-      </label>
-    ))
-  ) : (
-    <p className="no-todos">No todo's left</p>
-  );
+      ))
+    : null;
 
-  return (
-    <div className="todo-list">
-      {todoList}
-      <Filters />
-    </div>
-  );
+  return <div className="todo-list">{todoList}</div>;
 };
 
 export default Todos;

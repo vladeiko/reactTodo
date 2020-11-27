@@ -49,8 +49,9 @@ body {
 
 .todo-list__element {
   display: flex;
-  justify-content: around;
-  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  /* align-items: center; */
 }
 
 .list-element {
