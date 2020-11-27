@@ -1,9 +1,12 @@
-const todosReducer = (state, action) => {
+const state = {
+  todos: [],
+};
+
+const todosReducer = (state = state, action) => {
   switch (action.type) {
     case "Add": {
-      let todo;
-      todo.id = currentId++;
-      todo.isChecked = false;
+      // todo.id = currentId++;
+      // todo.isChecked = false;
     }
   }
 };
