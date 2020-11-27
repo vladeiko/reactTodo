@@ -26,8 +26,8 @@ class AddTodo extends Component {
         <input
           className="main-form__input"
           type="text"
-          onChange={this.handleChange}
-          value={this.state.content}
+          // onChange={this.handleChange}
+          // value={this.state.content}
           placeholder="What needs to be done?"
         />
       </form>

@@ -7,66 +7,65 @@ import Filters from "./Filters";
 class App extends Component {
   state = {
     todos: [],
-    filter: "All",
   };
 
   currentId = 0;
 
-  deleteTodo = (id) => {
-    const todos = this.state.todos.filter((item) => item.id !== id);
+  // deleteTodo = (id) => {
+  //   const todos = this.state.todos.filter((item) => item.id !== id);
 
-    this.setState({
-      todos,
-    });
-  };
+  //   this.setState({
+  //     todos,
+  //   });
+  // };
 
-  checkTodo = (id) => {
-    const todos = [...this.state.todos];
-    todos.forEach((i) => {
-      if (i.id === id) {
-        i.isChecked = !i.isChecked;
-      }
-    });
+  // checkTodo = (id) => {
+  //   const todos = [...this.state.todos];
+  //   todos.forEach((i) => {
+  //     if (i.id === id) {
+  //       i.isChecked = !i.isChecked;
+  //     }
+  //   });
 
-    this.setState({
-      todos,
-    });
-  };
+  //   this.setState({
+  //     todos,
+  //   });
+  // };
 
-  addTodo = (todo) => {
-    todo.id = this.currentId++;
-    todo.isChecked = false;
+  // addTodo = (todo) => {
+  //   todo.id = this.currentId++;
+  //   todo.isChecked = false;
 
-    const todos = [todo, ...this.state.todos];
-    this.setState({
-      todos,
-    });
-  };
+  //   const todos = [todo, ...this.state.todos];
+  //   this.setState({
+  //     todos,
+  //   });
+  // };
 
-  deleteCompleted = () => {
-    const todos = this.state.todos.filter((i) => !i.isChecked);
+  // deleteCompleted = () => {
+  //   const todos = this.state.todos.filter((i) => !i.isChecked);
 
-    this.setState({
-      todos,
-    });
-  };
+  //   this.setState({
+  //     todos,
+  //   });
+  // };
 
   render() {
     return (
       <div className="main-container">
         <Header />
         <div className="todo">
-          <AddTodo addTodo={this.addTodo} />
+          {/* <AddTodo addTodo={this.addTodo} /> */}
           <Todos
-            todos={this.state.todos}
-            deleteTodo={this.deleteTodo}
-            checkTodo={this.checkTodo}
+          // todos={this.state.todos}
+          // deleteTodo={this.deleteTodo}
+          // checkTodo={this.checkTodo}
           />
 
           {this.state.todos.length ? (
             <Filters
-              todos={this.state.todos}
-              deleteCompleted={this.deleteCompleted}
+            // todos={this.state.todos}
+            // deleteCompleted={this.deleteCompleted}
             />
           ) : null}
         </div>

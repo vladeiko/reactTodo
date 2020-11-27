@@ -11,6 +11,8 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+const currentId = 0;
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
