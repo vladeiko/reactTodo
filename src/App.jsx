@@ -18,6 +18,19 @@ class App extends Component {
     });
   };
 
+  checkTodo = (id) => {
+    const todos = this.state.todos;
+    todos.forEach((i) => {
+      if (i.id === id) {
+        i.isChecked = !i.isChecked;
+      }
+    });
+
+    this.setState({
+      todos: todos,
+    });
+  };
+
   addTodo = (todo) => {
     todo.id = this.currentId++;
     todo.isChecked = false;
@@ -34,7 +47,11 @@ class App extends Component {
         <Header />
         <div className="todo">
           <AddTodo addTodo={this.addTodo} />
-          <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
+          <Todos
+            todos={this.state.todos}
+            deleteTodo={this.deleteTodo}
+            checkTodo={this.checkTodo}
+          />
         </div>
       </div>
     );
