@@ -1,7 +1,9 @@
 import React from "react";
 import CreateTodoElement from "./CreateTodoElement";
+import { useSelector } from "react-redux";
 
-const Todos = ({ todos, deleteTodo, checkTodo, filter }) => {
+const Todos = ({ todos, deleteTodo, checkTodo }) => {
+  const filter = useSelector((state) => state.filterReducer);
   const getLocalTodos = () => {
     if (filter === "All") return todos;
 

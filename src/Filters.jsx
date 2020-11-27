@@ -1,16 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { SetAll, SetActive, SetCompleted } from "./actions";
 
 const Filters = ({ todos, setFilter, deleteCompleted }) => {
+  const dispatch = useDispatch();
+
   const handleAllClick = () => {
-    setFilter("All");
+    dispatch(SetAll());
   };
 
   const handleActiveClick = () => {
-    setFilter("Active");
+    dispatch(SetActive());
   };
 
   const handleCompletedClick = () => {
-    setFilter("Completed");
+    dispatch(SetCompleted());
   };
 
   const filters = (

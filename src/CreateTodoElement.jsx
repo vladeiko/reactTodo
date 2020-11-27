@@ -10,7 +10,7 @@ const CreateTodoElement = ({ todo, deleteTodo, checkTodo }) => {
   };
 
   return (
-    <div className={"todo-list__element "} key={todo.id}>
+    <div className={"todo-list__element "} key={todo.id} id={todo.id}>
       <label className="todo-label" htmlFor={"check-" + todo.id}>
         <div className="list-element">
           <div>

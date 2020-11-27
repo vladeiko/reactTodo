@@ -76,7 +76,6 @@ class App extends Component {
           {this.state.todos.length ? (
             <Filters
               todos={this.state.todos}
-              setFilter={this.setFilter}
               deleteCompleted={this.deleteCompleted}
             />
           ) : null}
