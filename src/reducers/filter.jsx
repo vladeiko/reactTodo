@@ -1,3 +1,5 @@
+export { all, completed, active } from "../actions/filterStates";
+
 const filterReducer = (state = "All", action) => {
   switch (action.type) {
     case "SetAll":
