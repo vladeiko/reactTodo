@@ -19,7 +19,7 @@ const Filters = ({ todos, deleteCompleted }) => {
 
   const filters = (
     <div className="filters">
-      <p className="filters__counter">{todos.length + " items left"}</p>
+      <p className="filters__counter">{/*{todos.length + */}" items left"</p>
       <div className="selected-input">
         <input
           className="filters__show-all"

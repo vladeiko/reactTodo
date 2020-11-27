@@ -10,27 +10,27 @@ const CreateTodoElement = ({ todo, deleteTodo, checkTodo }) => {
   };
 
   return (
-    <div className={"todo-list__element "} key={todo.id} id={todo.id}>
-      <label className="todo-label" htmlFor={"check-" + todo.id}>
+    <div className={"todo-list__element "} /*key={todo.id} id={todo.id}*/>
+      <label className="todo-label" /*htmlFor={"check-" + todo.id}*/>
         <div className="list-element">
           <div>
             <input
               className="check-button"
-              id={"check-" + todo.id}
+              // id={"check-" + todo.id}
               type="checkbox"
-              defaultChecked={todo.isChecked}
-              onClick={handleCheckClick}
+              // defaultChecked={todo.isChecked}
+              // onClick={handleCheckClick}
             ></input>
             <span
               className={
-                "span " +
-                (todo.isChecked === false ? "not-completed" : "completed")
+                "span " /* +
+                (todo.isChecked === false ? "not-completed" : "completed") */
               }
             >
-              {todo.content}
+              {/* {todo.content} */}
             </span>
           </div>
-          <button className="remove-button" onClick={handleRemoveClick}>
+          <button className="remove-button" /*onClick={handleRemoveClick}*/>
             ❌
           </button>
         </div>

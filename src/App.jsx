@@ -55,19 +55,19 @@ class App extends Component {
       <div className="main-container">
         <Header />
         <div className="todo">
-          {/* <AddTodo addTodo={this.addTodo} /> */}
+          <AddTodo /*addTodo={this.addTodo} */ />
           <Todos
           // todos={this.state.todos}
           // deleteTodo={this.deleteTodo}
           // checkTodo={this.checkTodo}
           />
 
-          {this.state.todos.length ? (
-            <Filters
-            // todos={this.state.todos}
-            // deleteCompleted={this.deleteCompleted}
-            />
-          ) : null}
+          {/* {this.state.todos.length ? ( */}
+          <Filters
+          // todos={this.state.todos}
+          // deleteCompleted={this.deleteCompleted}
+          />
+          {/* ) : null} */}
         </div>
       </div>
     );

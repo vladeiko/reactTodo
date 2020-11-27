@@ -18,15 +18,13 @@ const Todos = ({ todos, deleteTodo, checkTodo }) => {
 
   return (
     <div className="todo-list">
-      {todos.length
-        ? localTodos.map((todo) => (
-            <CreateTodoElement
-              todo={todo}
-              deleteTodo={deleteTodo}
-              checkTodo={checkTodo}
-            />
-          ))
-        : null}
+      {/* {localTodos.map((todo) => ( */}
+      <CreateTodoElement
+      // todo={todo}
+      // deleteTodo={deleteTodo}
+      // checkTodo={checkTodo}
+      />
+      {/* ))} */}
     </div>
   );
 };
