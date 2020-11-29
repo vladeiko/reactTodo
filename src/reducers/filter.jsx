@@ -1,4 +1,4 @@
-import { setAll, setCompleted, setActive } from "../actions/filterStates";
+import { setAll, setCompleted, setActive } from "../actions/filtersList";
 import { all, completed, active } from "./filtersList";
 
 const filterReducer = (state = all, action) => {

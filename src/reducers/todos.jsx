@@ -1,3 +1,10 @@
+import {
+  addTodoElement,
+  setCheckValue,
+  removeTodoElement,
+  clearCompleted,
+} from "../actions/todosList";
+
 const mainState = {
   todos: [],
   currentId: 0,
@@ -5,7 +12,7 @@ const mainState = {
 
 const todosReducer = (state = mainState, action) => {
   switch (action.type) {
-    case "AddTodoElement": {
+    case addTodoElement: {
       let newTodo = {
         id: state.currentId + 1,
         text: action.payload,
@@ -18,7 +25,7 @@ const todosReducer = (state = mainState, action) => {
       };
     }
 
-    case "SetCheckValue": {
+    case setCheckValue: {
       const todos = [...state.todos];
       todos.forEach((todo) => {
         if (todo.id === action.payload.id) {
@@ -33,7 +40,7 @@ const todosReducer = (state = mainState, action) => {
       };
     }
 
-    case "RemoveTodoElement": {
+    case removeTodoElement: {
       const todos = [...state.todos].filter(
         (todo) => todo.id !== action.payload.id
       );
@@ -44,7 +51,7 @@ const todosReducer = (state = mainState, action) => {
       };
     }
 
-    case "ClearCompleted": {
+    case clearCompleted: {
       const todos = [...state.todos].filter(
         (todo) => todo.isCompleted !== true
       );
