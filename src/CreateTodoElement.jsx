@@ -1,8 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { SetCheckValue } from "./actions";
 
-const CreateTodoElement = () => {
+const CreateTodoElement = ({ todo }) => {
+  const dispatch = useDispatch();
+
   const handleCheckClick = () => {
-    // checkTodo(todo.id);
+    dispatch(SetCheckValue(todo));
   };
 
   const handleRemoveClick = () => {
@@ -10,24 +14,24 @@ const CreateTodoElement = () => {
   };
 
   return (
-    <div className={"todo-list__element "} /*key={todo.id} id={todo.id}*/>
+    <div className={"todo-list__element "} key={todo.id} id={todo.id}>
       <label className="todo-label" /*htmlFor={"check-" + todo.id}*/>
         <div className="list-element">
           <div>
             <input
               className="check-button"
-              // id={"check-" + todo.id}
+              id={"check-" + todo.id}
               type="checkbox"
-              // defaultChecked={todo.isChecked}
-              // onClick={handleCheckClick}
+              defaultChecked={todo.isCompleted}
+              onClick={handleCheckClick}
             ></input>
             <span
               className={
-                "span " /* +
-                (todo.isChecked === false ? "not-completed" : "completed") */
+                "span " +
+                (todo.isCompleted === true ? "completed" : "not-completed")
               }
             >
-              {/* {todo.content} */}
+              {todo.text}
             </span>
           </div>
           <button className="remove-button" /*onClick={handleRemoveClick}*/>

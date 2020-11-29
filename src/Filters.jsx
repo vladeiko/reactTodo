@@ -1,9 +1,13 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SetAll, SetActive, SetCompleted } from "./actions";
 
-const Filters = ({ todos, deleteCompleted }) => {
+const Filters = () => {
   const dispatch = useDispatch();
+
+  const todos = useSelector((state) => state.todosReducer.todos).filter(
+    (todo) => todo.isCompleted === false
+  );
 
   const handleAllClick = () => {
     dispatch(SetAll());
@@ -19,7 +23,7 @@ const Filters = ({ todos, deleteCompleted }) => {
 
   const filters = (
     <div className="filters">
-      <p className="filters__counter">{/*{todos.length + */} items left</p>
+      <p className="filters__counter">{todos.length} items left</p>
       <div className="selected-input">
         <input
           className="filters__show-all"
@@ -57,7 +61,7 @@ const Filters = ({ todos, deleteCompleted }) => {
         className="filters__clear-completed"
         type="radio"
         name="radio-filter"
-        onClick={deleteCompleted}
+        // onClick={deleteCompleted}
       >
         Clear completed
       </button>

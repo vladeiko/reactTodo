@@ -3,20 +3,33 @@ const mainState = {
   currentId: 0,
 };
 
-const todosReducer = (state, action) => {
-  state = mainState;
-
+const todosReducer = (state = mainState, action) => {
   switch (action.type) {
-    case "Add": {
+    case "AddTodoElement": {
       let newTodo = {
-        id: state.currentId++,
+        id: state.currentId + 1,
         text: action.payload,
         isCompleted: false,
       };
 
-      state.todos.push(newTodo);
+      return {
+        todos: [newTodo, ...state.todos],
+        currentId: state.currentId + 1,
+      };
+    }
 
-      return { ...state };
+    case "SetCheckValue": {
+      const todos = [...state.todos];
+      todos.forEach((todo) => {
+        if (todo.id === action.payload.id) {
+          todo.isCompleted = !todo.isCompleted;
+          return;
+        }
+      });
+      return {
+        todos,
+        currentId: state.currentId,
+      };
     }
 
     default:

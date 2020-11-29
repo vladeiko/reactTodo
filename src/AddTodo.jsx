@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { Add, SetInputValue } from "./actions";
+import { AddTodoElement, SetInputValue } from "./actions";
 import { useSelector } from "react-redux";
 
 const AddTodo = () => {
@@ -13,7 +13,7 @@ const AddTodo = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(Add(inputValue));
+    dispatch(AddTodoElement(inputValue));
     dispatch(SetInputValue(""));
   };
 

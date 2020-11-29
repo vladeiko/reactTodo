@@ -1,5 +1,12 @@
 import { setAll, setCompleted, setActive } from "./filterStates";
 
+export const SetInputValue = (value) => {
+  return {
+    type: "SetInputValue",
+    payload: value,
+  };
+};
+
 export const SetAll = () => {
   return {
     type: setAll,
@@ -18,16 +25,23 @@ export const SetActive = () => {
   };
 };
 
-export const Add = (text) => {
+export const AddTodoElement = (text) => {
   return {
-    type: "Add",
+    type: "AddTodoElement",
     payload: text,
   };
 };
 
-export const SetInputValue = (value) => {
+export const DeleteTodoElement = (todo) => {
   return {
-    type: "SetInputValue",
-    payload: value,
+    type: "RemoveTodoElement",
+    payload: todo,
+  };
+};
+
+export const SetCheckValue = (todo) => {
+  return {
+    type: "SetCheckValue",
+    payload: todo,
   };
 };

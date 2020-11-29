@@ -13,7 +13,7 @@ const filterReducer = (state = all, action) => {
       return active;
 
     default:
-      return all;
+      return state;
   }
 };
 
