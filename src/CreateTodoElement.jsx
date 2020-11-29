@@ -1,12 +1,12 @@
 import React from "react";
 
-const CreateTodoElement = ({ todo, deleteTodo, checkTodo }) => {
+const CreateTodoElement = () => {
   const handleCheckClick = () => {
-    checkTodo(todo.id);
+    // checkTodo(todo.id);
   };
 
   const handleRemoveClick = () => {
-    deleteTodo(todo.id);
+    // deleteTodo(todo.id);
   };
 
   return (

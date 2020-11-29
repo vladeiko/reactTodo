@@ -2,8 +2,9 @@ import React from "react";
 import CreateTodoElement from "./CreateTodoElement";
 import { useSelector } from "react-redux";
 
-const Todos = ({ todos, deleteTodo, checkTodo }) => {
+const Todos = () => {
   const filter = useSelector((state) => state.filterReducer);
+  const todos = useSelector((state) => state.todosReducer);
 
   const getLocalTodos = () => {
     if (filter === "All") return todos;
@@ -18,13 +19,7 @@ const Todos = ({ todos, deleteTodo, checkTodo }) => {
 
   return (
     <div className="todo-list">
-      {/* {localTodos.map((todo) => ( */}
-      <CreateTodoElement
-      // todo={todo}
-      // deleteTodo={deleteTodo}
-      // checkTodo={checkTodo}
-      />
-      {/* ))} */}
+      <CreateTodoElement />
     </div>
   );
 };

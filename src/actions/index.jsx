@@ -1,17 +1,33 @@
+import { setAll, setCompleted, setActive } from "./filterStates";
+
 export const SetAll = () => {
   return {
-    type: "SetAll",
+    type: setAll,
   };
 };
 
 export const SetCompleted = () => {
   return {
-    type: "SetCompleted",
+    type: setCompleted,
   };
 };
 
 export const SetActive = () => {
   return {
-    type: "SetActive",
+    type: setActive,
+  };
+};
+
+export const Add = (text) => {
+  return {
+    type: "Add",
+    payload: text,
+  };
+};
+
+export const SetInputValue = (value) => {
+  return {
+    type: "SetInputValue",
+    payload: value,
   };
 };

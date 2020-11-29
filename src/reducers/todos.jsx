@@ -1,15 +1,27 @@
-const state = {
+const mainState = {
   todos: [],
+  currentId: 0,
 };
 
-const todosReducer = (state = state, action) => {
+const todosReducer = (state, action) => {
+  state = mainState;
+
   switch (action.type) {
     case "Add": {
-      return {
-        todos: [...state.todos],
+      let newTodo = {
+        id: state.currentId++,
+        text: action.payload,
+        isCompleted: false,
       };
-      // todo.id = currentId++;
-      // todo.isChecked = false;
+
+      state.todos.push(newTodo);
+
+      return { ...state };
     }
+
+    default:
+      return { ...state };
   }
 };
+
+export default todosReducer;

@@ -1,18 +1,19 @@
-export { all, completed, active } from "../actions/filterStates";
+import { setAll, setCompleted, setActive } from "../actions/filterStates";
+import { all, completed, active } from "./filtersList";
 
-const filterReducer = (state = "All", action) => {
+const filterReducer = (state = all, action) => {
   switch (action.type) {
-    case "SetAll":
-      return "All";
+    case setAll:
+      return all;
 
-    case "SetCompleted":
-      return "Completed";
+    case setCompleted:
+      return completed;
 
-    case "SetActive":
-      return "Active";
+    case setActive:
+      return active;
 
     default:
-      return "All";
+      return all;
   }
 };
 

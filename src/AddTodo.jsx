@@ -1,38 +1,34 @@
-import React, { Component } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { Add, SetInputValue } from "./actions";
+import { useSelector } from "react-redux";
 
-class AddTodo extends Component {
-  state = {
-    content: "",
+const AddTodo = () => {
+  const inputValue = useSelector((state) => state.inputReducer);
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    dispatch(SetInputValue(e.target.value));
   };
 
-  handleChange = (e) => {
-    this.setState({
-      content: e.target.value,
-    });
-  };
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    this.props.addTodo(this.state);
-    this.setState({
-      content: "",
-    });
+    dispatch(Add(inputValue));
+    dispatch(SetInputValue(""));
   };
 
-  render() {
-    return (
-      <form className="main-form" onSubmit={this.handleSubmit}>
-        <input
-          className="main-form__input"
-          type="text"
-          // onChange={this.handleChange}
-          // value={this.state.content}
-          placeholder="What needs to be done?"
-        />
-      </form>
-    );
-  }
-}
+  return (
+    <form className="main-form" onSubmit={handleSubmit}>
+      <input
+        className="main-form__input"
+        type="text"
+        onSubmit={handleSubmit}
+        onChange={handleChange}
+        value={inputValue}
+        placeholder="What needs to be done?"
+      />
+    </form>
+  );
+};
 
 export default AddTodo;

@@ -1,3 +1,3 @@
-export const all = "All";
-export const completed = "Completed";
-export const active = "Active";
+export const setAll = "SetAll";
+export const setCompleted = "SetCompleted";
+export const setActive = "SetActive";
