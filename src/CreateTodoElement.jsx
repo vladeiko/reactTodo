@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { SetCheckValue } from "./actions";
+import { SetCheckValue, DeleteTodoElement } from "./actions";
 
 const CreateTodoElement = ({ todo }) => {
   const dispatch = useDispatch();
@@ -10,12 +10,12 @@ const CreateTodoElement = ({ todo }) => {
   };
 
   const handleRemoveClick = () => {
-    // deleteTodo(todo.id);
+    dispatch(DeleteTodoElement(todo));
   };
 
   return (
     <div className={"todo-list__element "} key={todo.id} id={todo.id}>
-      <label className="todo-label" /*htmlFor={"check-" + todo.id}*/>
+      <label className="todo-label">
         <div className="list-element">
           <div>
             <input
@@ -34,7 +34,7 @@ const CreateTodoElement = ({ todo }) => {
               {todo.text}
             </span>
           </div>
-          <button className="remove-button" /*onClick={handleRemoveClick}*/>
+          <button className="remove-button" onClick={handleRemoveClick}>
             ❌
           </button>
         </div>

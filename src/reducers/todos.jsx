@@ -26,6 +26,29 @@ const todosReducer = (state = mainState, action) => {
           return;
         }
       });
+
+      return {
+        todos,
+        currentId: state.currentId,
+      };
+    }
+
+    case "RemoveTodoElement": {
+      const todos = [...state.todos].filter(
+        (todo) => todo.id !== action.payload.id
+      );
+
+      return {
+        todos,
+        currentId: state.currentId,
+      };
+    }
+
+    case "ClearCompleted": {
+      const todos = [...state.todos].filter(
+        (todo) => todo.isCompleted !== true
+      );
+
       return {
         todos,
         currentId: state.currentId,

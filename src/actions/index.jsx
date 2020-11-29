@@ -45,3 +45,9 @@ export const SetCheckValue = (todo) => {
     payload: todo,
   };
 };
+
+export const ClearCompleted = () => {
+  return {
+    type: "ClearCompleted",
+  };
+};

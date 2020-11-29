@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SetAll, SetActive, SetCompleted } from "./actions";
+import { SetAll, SetActive, SetCompleted, ClearCompleted } from "./actions";
 
 const Filters = () => {
   const dispatch = useDispatch();
@@ -19,6 +19,10 @@ const Filters = () => {
 
   const handleCompletedClick = () => {
     dispatch(SetCompleted());
+  };
+
+  const handleClearCompleted = () => {
+    dispatch(ClearCompleted());
   };
 
   const filters = (
@@ -61,7 +65,7 @@ const Filters = () => {
         className="filters__clear-completed"
         type="radio"
         name="radio-filter"
-        // onClick={deleteCompleted}
+        onClick={handleClearCompleted}
       >
         Clear completed
       </button>
